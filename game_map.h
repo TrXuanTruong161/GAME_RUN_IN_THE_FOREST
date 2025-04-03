@@ -11,7 +11,7 @@ public:
 };
 class GameMap {
 public:
-    GameMap() {;};
+    GameMap() { file_name_[0] = '/0'; };
     ~GameMap() {;};
     void LoadMap( const char* name);
     void LoadTiles(SDL_Renderer* screen);

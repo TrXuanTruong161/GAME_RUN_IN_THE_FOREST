@@ -1,2 +1,29 @@
-﻿  main.cpp
+﻿  MainObject.cpp
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(103,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(104,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(189,12): warning C4305: '+=': truncation from 'double' to 'float'
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(217,12): warning C4305: '+=': truncation from 'double' to 'float'
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(252,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(253,44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(254,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(255,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(262,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(272,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(280,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(281,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(283,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(284,45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(293,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(304,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(316,43): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(321,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\MainObject.cpp(328,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\game_map.h(14,33): warning C4305: '=': truncation from 'int' to 'char'
+  (compiling source file 'main.cpp')
+  
+D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\game_map.h(14,33): warning C4309: '=': truncation of constant value
+  (compiling source file 'main.cpp')
+  
+  Generating Code...
   game.vcxproj -> D:\OneDrive\Tài liệu\Visual Studio 2022\Templates\ProjectTemplates\Visual C++ Project\game\x64\Debug\game.exe

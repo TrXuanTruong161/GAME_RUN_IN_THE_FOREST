@@ -111,61 +111,96 @@ void MainObject::Show(SDL_Renderer* des) {
 	SDL_RenderCopy(des, p_object_, current_clip, &renderQuad);
 
 }
-void MainObject::HandeInputAction(SDL_Event events, SDL_Renderer* screen) {
-	if (events.type == SDL_KEYDOWN) {
-		switch (events.key.keysym.sym) {
-		case  SDLK_RIGHT:
-			status_ = WALK_RIGHT;
-			input_type_.right_ = 1;
-			input_type_.left_ = 0;
-			break;
 
-
-		case  SDLK_LEFT:
-			status_ = WALK_LEFT;
-			input_type_.left_ = 1;
-			input_type_.right_ = 0;
-			break;
-		
+void MainObject::HandeInputAction(SDL_Event events, SDL_Renderer* screen, bool is_player_one) {
+	if (is_player_one) {
+		if (events.type == SDL_KEYDOWN) {
+			switch (events.key.keysym.sym) {
+			case SDLK_RIGHT:
+				cout << "Player 1: Right key pressed" << endl; 
+				status_ = WALK_RIGHT;
+				input_type_.right_ = 1;
+				input_type_.left_ = 0;
+				break;
+			case SDLK_LEFT:
+				cout << "Player 1: Left key pressed" << endl; 
+				status_ = WALK_LEFT;
+				input_type_.left_ = 1;
+				input_type_.right_ = 0;
+				break;
+			}
 		}
-
-	}
-	else if (events.type == SDL_KEYUP) {
-		switch (events.key.keysym.sym) {
-		case  SDLK_RIGHT:
-			status_ = WALK_RIGHT;
-			input_type_.right_ = 0;
-			break;
-
-
-		case  SDLK_LEFT:
-			status_ = WALK_LEFT;
-			input_type_.left_ = 0;
-			break;
-
+		else if (events.type == SDL_KEYUP) {
+			switch (events.key.keysym.sym) {
+			case SDLK_RIGHT:
+				status_ = WALK_RIGHT;
+				input_type_.right_ = 0;
+				break;
+			case SDLK_LEFT:
+				status_ = WALK_LEFT;
+				input_type_.left_ = 0;
+				break;
+			}
+		}
+		if (events.type == SDL_MOUSEBUTTONDOWN) {
+			if (events.button.button == SDL_BUTTON_RIGHT) {
+				input_type_.jump_ = 1;
+			}
 		}
 	}
-	if (events.type == SDL_MOUSEBUTTONDOWN) {
-		if (events.button.button == SDL_BUTTON_RIGHT) {
-			input_type_.jump_ = 1;
+	else {
+		if (events.type == SDL_KEYDOWN) {
+			switch (events.key.keysym.sym) {
+			case SDLK_d:
+				cout << "Player 2: D key pressed" <<endl; 
+				status_ = WALK_RIGHT;
+				input_type_.right_ = 1;
+				input_type_.left_ = 0;
+				break;
+			case SDLK_a:
+				cout << "Player 2: A key pressed" <<endl; 
+				status_ = WALK_LEFT;
+				input_type_.left_ = 1;
+				input_type_.right_ = 0;
+				break;
+			case SDLK_SPACE:
+				cout << "Player 2: Space key pressed" <<endl; 
+				input_type_.jump_ = 1;
+				break;
+			}
+		}
+		else if (events.type == SDL_KEYUP) {
+			switch (events.key.keysym.sym) {
+			case SDLK_d:
+				status_ = WALK_RIGHT;
+				input_type_.right_ = 0;
+				break;
+			case SDLK_a:
+				status_ = WALK_LEFT;
+				input_type_.left_ = 0;
+				break;
+			}
 		}
 	}
 }
 
-void MainObject::doPlayer(Map&map_data){
+void MainObject::doPlayer(Map& map_data) {
 	x_val_ = 0;
 	y_val_ += GRAVITY_SPEED;
 	if (y_val_ >= MAX_FALL_SPEED) {
 		y_val_ = MAX_FALL_SPEED;
 	}
 	if (input_type_.left_ == 1) {
+		cout << "Moving left" << endl; 
 		x_val_ -= PLAYER_SPEED;
 	}
 	else if (input_type_.right_ == 1) {
+		cout << "Moving right" << endl; 
 		x_val_ += PLAYER_SPEED;
 	}
 	if (input_type_.jump_ == 1) {
-		if (on_ground_==true) {
+		if (on_ground_ == true) {
+			cout << "Jumping" << endl; 
 			y_val_ = -PLAYER_JUMP_VAL;
 			on_ground_ = false;
 		}
@@ -173,9 +208,40 @@ void MainObject::doPlayer(Map&map_data){
 	}
 	CheckToMap(map_data);
 	CenterEntityOnMap(map_data);
-
-
+	if (IsAtEndOfMap(map_data)) {
+		is_end_of_map_ = true;
+	}
 }
+void MainObject::doPlayer2(Map& map_data) {
+	x_val_ = 0;
+	y_val_ += GRAVITY_SPEED;
+	if (y_val_ >= MAX_FALL_SPEED) {
+		y_val_ = MAX_FALL_SPEED;
+	}
+	if (input_type_.left_ == 1) {
+		cout << "Moving left" << endl;
+		x_val_ -= PLAYER_SPEED;
+	}
+	else if (input_type_.right_ == 1) {
+		cout << "Moving right" << endl;
+		x_val_ += PLAYER_SPEED;
+	}
+	if (input_type_.jump_ == 1) {
+		if (on_ground_ == true) {
+			cout << "Jumping" << endl;
+			y_val_ = -PLAYER_JUMP_VAL;
+			on_ground_ = false;
+		}
+		input_type_.jump_ = 0;
+	}
+	CheckToMap(map_data);
+	
+	if (IsAtEndOfMap(map_data)) {
+		is_end_of_map_ = true;
+	}
+}
+
+
 void MainObject::CheckToMap(Map& map_data) {
 	int x1 = 0;
 	int x2 = 0;
@@ -266,4 +332,8 @@ void MainObject::CenterEntityOnMap(Map& map_data) {
 	else if (map_data.start_y_ + SCREEN_HEIGHT >= map_data.max_y_) {
 		map_data.start_y_ = map_data.max_y_ - SCREEN_HEIGHT;
 	}
+}
+bool MainObject::IsAtEndOfMap(const Map& map_data) {
+	
+	return (x_pos_  >= map_data.max_x_- width_frame_-1);
 }
